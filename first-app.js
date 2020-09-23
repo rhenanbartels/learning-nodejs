@@ -1,1 +1,4 @@
-console.log("Sarting first app!")
+const fs = require('fs');
+
+
+fs.writeFileSync('hello.txt', 'hello there!')
