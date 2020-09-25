@@ -1,4 +1,6 @@
+const fs = require("fs");
 const http = require('http');
+
 
 
 const server = http.createServer((request, response) => {
@@ -21,12 +23,13 @@ const server = http.createServer((request, response) => {
         request.on("end", () => {
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.split("=")[1];
-            console.log(message);
-        })
-        response.statusCode = 302;
-        response.setHeader("Location", "/");
+            fs.writeFile("message.txt", message, err =>{
+                response.statusCode = 302;
+                response.setHeader("Location", "/");
 
-        return response.end();
+                return response.end();
+            })
+        })
     }
 
 });
