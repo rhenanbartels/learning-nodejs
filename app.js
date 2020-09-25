@@ -14,6 +14,15 @@ const server = http.createServer((request, response) => {
         return response.end();
 
     } else if(method === "POST" && request.url === "/message"){
+        const body = [];
+        request.on("data", chunk => {
+            body.push(chunk);
+        });
+        request.on("end", () => {
+            const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.split("=")[1];
+            console.log(message);
+        })
         response.statusCode = 302;
         response.setHeader("Location", "/");
 
