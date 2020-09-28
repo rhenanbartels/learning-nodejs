@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rhenanbartels/learning-nodejs/issues"
   },
-  "homepage": "https://github.com/rhenanbartels/learning-nodejs#readme"
+  "homepage": "https://github.com/rhenanbartels/learning-nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
