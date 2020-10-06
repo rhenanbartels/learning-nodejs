@@ -1,12 +1,12 @@
 const express = require('express');
+const path = require('path');
+
+const rootDir = require('../utils/path.js');
 
 const router = express.Router();
 
 router.get('/add-product', (request, response, next) => {
-    response.send(
-        "<form action='/admin/product' method='POST'>"
-        +"<input type='text' name='title'><input type='submit' value='Add'></form>"
-    );
+    response.sendFile(path.join(rootDir, 'views', 'add-product.html'));
 });
 
 //this middleware will only respond to post method

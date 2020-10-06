@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
 
+const rootDir = require('./utils/path.js');
+
 const adminRoutes = require('./routes/admin.js');
 const shopRoutes = require("./routes/shop.js");
 
@@ -15,7 +17,7 @@ app.use(shopRoutes);
 
 // 404 page not found middleware
 app.use((request, response, next) => {
-    response.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+    response.status(404).sendFile(path.join(rootDir, 'views', '404.html'));
 })
 
 const server = http.createServer(app);
